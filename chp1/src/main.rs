@@ -123,4 +123,46 @@ fn main() {
         "Array occupies {} bytes",
         std::mem::size_of_val(&number_array_1)
     );
+
+    // Return an element at an index if exists (enum type returns either value or Enum)
+    let check_index = number_array_1.get(100);
+    println!("Index: {:?}", check_index);
+
+    // Vectors - resizable unlike arrays (elements have to be same type)
+    let mut number_vec = vec![4, 5, 6, 8, 9, 10, 11, 15, 16, 12, 10];
+    println!("{}", number_vec[0]);
+    println!("{:?}", number_vec);
+
+    number_vec[4] = 5;
+    println!("{}", number_vec[4]);
+
+    let array_with_same_elements = vec![0; 10];
+
+    let mut string_array_1 = vec!["apple", "tomato", "grapes"];
+    let string_array_2 = vec!["Unknown"; 6];
+
+    string_array_1[0] = "kamran azam";
+
+    let char_vec = vec!['a', 'p', 'p', 'l', 'e'];
+
+    // Vector slice (TODO: figure out what the heck && means.. I assume a pointer?)
+    let subset_vec = &&number_vec[0..3];
+    println!("The subset of values of array are {:?}", subset_vec);
+
+    let check_index = number_vec.get(100);
+    println!("Index: {:?}", check_index);
+
+    number_vec.push(30);
+    number_vec.push(40);
+
+    println!("{:?}", number_vec);
+
+    number_vec.remove(5); // should be the 6th value
+    println!(
+        "The vectors values are {:?} (10 should be removed)",
+        number_vec
+    );
+
+    // Contains requires a reference
+    println!("Contains 10: {}", number_vec.contains(&10));
 }
